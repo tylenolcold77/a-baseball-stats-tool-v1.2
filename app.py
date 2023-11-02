@@ -41,17 +41,23 @@ def main():
     while True:
         print("\n----MENU----\n")
         print("Here are your choices:")
-        print("A) Display Team Stats")
-        print("B) Quit")
-        choice = input("Enter an option")
+        print("A) Display Team Stats:")
+        print("B) Quit:")
+        choice = input("Enter an option:")
         
         if choice.lower() == "b":
             break
         elif choice.lower() == 'a':
             for i, team in enumerate(TEAMS, 1):
                 print(f"{i}) {team}")
-            team_choice = int(input("Enter an option:")) - 1
-            display_stats(TEAMS[team_choice], balanced_teams[TEAMS[team_choice]])
+            team_choice = input("Enter an option:")
+            if team_choice > "0" and team_choice <= "3":
+                team_choice = int(team_choice) - 1
+                display_stats(TEAMS[team_choice], balanced_teams[TEAMS[team_choice]])
+            else:
+                print("That is not a valid option. Please try again.")
+        else:
+            print("Please select a valid option.")
 
 if __name__ == '__main__':
     main()
